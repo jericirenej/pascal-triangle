@@ -1,0 +1,25 @@
+{
+  "name": "pascal-triangle",
+  "module": "src/index.ts",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "bun build src/index.ts --minify --outfile dist/pascal-triangle.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "@types/bun": "latest",
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.8.0"
+  },
+  "keywords": [
+    "cli",
+    "zero-dependencies",
+    "math",
+    "binomial-coefficient",
+    "pascal-triangle"
+  ]
+}
