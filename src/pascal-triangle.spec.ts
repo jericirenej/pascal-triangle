@@ -10,12 +10,39 @@ import {
 import { MESSAGES, handleArgs, transformToNumbers } from "./cli";
 import {
   binomialCoefficient,
+  cachedFactorial,
   factorial,
   generateFactors,
   numToSequence,
 } from "./calculations";
 
 describe("factorial", () => {
+  describe("baseFactorial", () => {
+    const cache = new Map<number, number>([
+      [0, 1],
+      [1, 1],
+      [2, 2],
+      [3, 6],
+      [4, 24],
+      [5, 120],
+    ]);
+    it("Pulls from cache", () => {
+      const setSpy = spyOn(cache, "set");
+      const factorial = cachedFactorial(cache);
+      for (const num of [0, 1, 2, 3, 4, 5]) {
+        factorial(num);
+      }
+      expect(setSpy).not.toHaveBeenCalled();
+    });
+    it("Adds items to cache", () => {
+      const setSpy = spyOn(cache, "set");
+      const factorial = cachedFactorial(cache);
+      for (const num of [6, 7, 8]) {
+        factorial(num);
+      }
+      expect(setSpy).toHaveBeenCalledTimes(3);
+    });
+  });
   it("factorial calculates value", () => {
     [
       [0, 1],
